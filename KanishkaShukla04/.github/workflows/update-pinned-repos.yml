@@ -1,0 +1,142 @@
+name: 🔄 Update Pinned Repositories
+
+on:
+  schedule:
+    # Runs every 6 hours
+    - cron: '0 */6 * * *'
+  workflow_dispatch: # Allow manual trigger
+  push:
+    branches: [main]
+
+jobs:
+  update-pinned-repos:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests PyGithub
+
+      - name: Fetch pinned repos and update README
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_USERNAME: KanishkaShukla04
+        run: |
+          python3 << 'EOF'
+          import os, re, requests, json
+
+          username = os.environ["GITHUB_USERNAME"]
+          token = os.environ["GH_TOKEN"]
+
+          # GraphQL query to get pinned repositories
+          query = """
+          {
+            user(login: "%s") {
+              pinnedItems(first: 6, types: REPOSITORY) {
+                nodes {
+                  ... on Repository {
+                    name
+                    description
+                    url
+                    stargazerCount
+                    forkCount
+                    primaryLanguage { name color }
+                    updatedAt
+                  }
+                }
+              }
+            }
+          }
+          """ % username
+
+          headers = {"Authorization": f"Bearer {token}"}
+          response = requests.post(
+              "https://api.github.com/graphql",
+              json={"query": query},
+              headers=headers
+          )
+          data = response.json()
+          pinned = data["data"]["user"]["pinnedItems"]["nodes"]
+
+          # Language color map (fallback)
+          lang_colors = {
+            "Python": "3776AB", "TypeScript": "3178C6", "JavaScript": "F7DF1E",
+            "Java": "ED8B00", "Go": "00ADD8", "Rust": "CE422B", "C++": "00599C",
+          }
+
+          # Build the pinned repos section
+          rows = []
+          for i in range(0, len(pinned), 2):
+            pair = pinned[i:i+2]
+            cells = []
+            for repo in pair:
+              name = repo["name"]
+              desc = repo.get("description") or "No description provided."
+              url = repo["url"]
+              stars = repo["stargazerCount"]
+              forks = repo["forkCount"]
+              lang = repo.get("primaryLanguage")
+              lang_name = lang["name"] if lang else "Code"
+              lang_color = lang["color"].lstrip("#") if lang and lang.get("color") else lang_colors.get(lang_name, "888888")
+
+              cell = f"""<td width="50%" valign="top">
+
+**[{name}]({url})**
+
+{desc}
+
+![Stars](https://img.shields.io/github/stars/KanishkaShukla04/{name}?style=flat-square&color=7C4DFF&labelColor=0d0d1a)&nbsp;
+![Forks](https://img.shields.io/github/forks/KanishkaShukla04/{name}?style=flat-square&color=00E5FF&labelColor=0d0d1a)&nbsp;
+![Language](https://img.shields.io/badge/{lang_name.replace('-','--')}-{lang_color}?style=flat-square&logo={lang_name.lower()}&logoColor=white)
+
+</td>"""
+              cells.append(cell)
+
+            # Pad if odd number
+            if len(cells) == 1:
+              cells.append("<td width='50%'></td>")
+
+            rows.append(f"<tr>\n{''.join(cells)}\n</tr>")
+
+          table = f"""<!-- PINNED-REPOS:START -->
+<table width="100%">
+{''.join(rows)}
+</table>
+<!-- PINNED-REPOS:END -->"""
+
+          # Read README
+          with open("README.md", "r") as f:
+            content = f.read()
+
+          # Replace the section between markers
+          pattern = r"<!-- PINNED-REPOS:START -->.*?<!-- PINNED-REPOS:END -->"
+          if re.search(pattern, content, re.DOTALL):
+            new_content = re.sub(pattern, table, content, flags=re.DOTALL)
+          else:
+            print("Markers not found in README — skipping update")
+            new_content = content
+
+          with open("README.md", "w") as f:
+            f.write(new_content)
+
+          print(f"✅ Updated {len(pinned)} pinned repositories")
+          EOF
+
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git diff --quiet && echo "No changes to commit" || (
+            git add README.md
+            git commit -m "🔄 Auto-update pinned repositories [$(date +'%Y-%m-%d %H:%M')]"
+            git push
+          )

@@ -1,0 +1,181 @@
+<svg width="900" height="280" viewBox="0 0 900 280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="50%" r="70%">
+      <stop offset="0%" stop-color="#0d0d1a"/>
+      <stop offset="100%" stop-color="#020208"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softglow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <linearGradient id="nameGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00E5FF"/>
+      <stop offset="50%" stop-color="#7C4DFF"/>
+      <stop offset="100%" stop-color="#64FFDA"/>
+    </linearGradient>
+    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00E5FF" stop-opacity="0"/>
+      <stop offset="30%" stop-color="#00E5FF"/>
+      <stop offset="70%" stop-color="#7C4DFF"/>
+      <stop offset="100%" stop-color="#7C4DFF" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="280" fill="url(#bgGrad)" rx="12"/>
+
+  <!-- Static small stars -->
+  <g fill="white" opacity="0.7">
+    <circle cx="45" cy="22" r="0.8"/><circle cx="123" cy="48" r="0.6"/><circle cx="201" cy="15" r="1"/>
+    <circle cx="267" cy="61" r="0.7"/><circle cx="334" cy="30" r="0.9"/><circle cx="412" cy="8" r="0.6"/>
+    <circle cx="478" cy="55" r="0.8"/><circle cx="556" cy="20" r="1"/><circle cx="623" cy="42" r="0.7"/>
+    <circle cx="689" cy="12" r="0.9"/><circle cx="745" cy="58" r="0.6"/><circle cx="812" cy="28" r="0.8"/>
+    <circle cx="867" cy="45" r="0.7"/><circle cx="78" cy="90" r="0.6"/><circle cx="156" cy="75" r="0.9"/>
+    <circle cx="234" cy="105" r="0.7"/><circle cx="300" cy="85" r="0.8"/><circle cx="389" cy="110" r="0.6"/>
+    <circle cx="445" cy="78" r="1"/><circle cx="512" cy="95" r="0.7"/><circle cx="589" cy="70" r="0.9"/>
+    <circle cx="656" cy="108" r="0.6"/><circle cx="723" cy="82" r="0.8"/><circle cx="790" cy="68" r="0.7"/>
+    <circle cx="845" cy="92" r="0.9"/><circle cx="30" cy="150" r="0.6"/><circle cx="110" cy="165" r="0.8"/>
+    <circle cx="188" cy="140" r="0.7"/><circle cx="255" cy="175" r="0.9"/><circle cx="322" cy="155" r="0.6"/>
+    <circle cx="399" cy="170" r="0.8"/><circle cx="466" cy="145" r="0.7"/><circle cx="533" cy="180" r="0.9"/>
+    <circle cx="600" cy="152" r="0.6"/><circle cx="667" cy="168" r="0.8"/><circle cx="734" cy="142" r="0.7"/>
+    <circle cx="800" cy="178" r="0.9"/><circle cx="858" cy="158" r="0.6"/><circle cx="60" cy="220" r="0.8"/>
+    <circle cx="140" cy="238" r="0.7"/><circle cx="220" cy="210" r="0.9"/><circle cx="290" cy="248" r="0.6"/>
+    <circle cx="370" cy="225" r="0.8"/><circle cx="440" cy="255" r="0.7"/><circle cx="520" cy="218" r="0.9"/>
+    <circle cx="590" cy="242" r="0.6"/><circle cx="660" cy="228" r="0.8"/><circle cx="740" cy="260" r="0.7"/>
+    <circle cx="820" cy="215" r="0.9"/><circle cx="880" cy="245" r="0.6"/>
+  </g>
+
+  <!-- Twinkling stars (larger, animated) -->
+  <g filter="url(#glow)">
+    <circle cx="88" cy="35" r="1.5" fill="#00E5FF">
+      <animate attributeName="opacity" values="1;0.2;1" dur="2.3s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="350" cy="18" r="1.5" fill="#64FFDA">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="1.8s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="650" cy="40" r="1.5" fill="#7C4DFF">
+      <animate attributeName="opacity" values="1;0.2;1" dur="3.1s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="820" cy="15" r="1.5" fill="#00E5FF">
+      <animate attributeName="opacity" values="0.4;1;0.4" dur="2.7s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="170" cy="115" r="1.8" fill="#64FFDA">
+      <animate attributeName="opacity" values="1;0.1;1" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="730" cy="100" r="1.8" fill="#00E5FF">
+      <animate attributeName="opacity" values="0.2;1;0.2" dur="2.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="490" cy="240" r="1.5" fill="#7C4DFF">
+      <animate attributeName="opacity" values="1;0.3;1" dur="1.6s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="280" cy="230" r="1.5" fill="#64FFDA">
+      <animate attributeName="opacity" values="0.3;1;0.3" dur="3.4s" repeatCount="indefinite"/>
+    </circle>
+  </g>
+
+  <!-- Shooting star 1 -->
+  <g>
+    <line x1="0" y1="40" x2="60" y2="55" stroke="url(#lineGrad)" stroke-width="1.5" stroke-linecap="round" opacity="0">
+      <animate attributeName="opacity" values="0;0;0.9;0" dur="5s" repeatCount="indefinite" begin="1s"/>
+    </line>
+    <circle cx="0" cy="40" r="2" fill="white" filter="url(#glow)" opacity="0">
+      <animate attributeName="cx" values="0;200" dur="5s" repeatCount="indefinite" begin="1s"/>
+      <animate attributeName="cy" values="40;68" dur="5s" repeatCount="indefinite" begin="1s"/>
+      <animate attributeName="opacity" values="0;0;1;0" dur="5s" repeatCount="indefinite" begin="1s"/>
+    </circle>
+  </g>
+
+  <!-- Shooting star 2 -->
+  <g>
+    <circle cx="900" cy="20" r="1.8" fill="#00E5FF" filter="url(#glow)" opacity="0">
+      <animate attributeName="cx" values="900;680" dur="4s" repeatCount="indefinite" begin="3.5s"/>
+      <animate attributeName="cy" values="20;75" dur="4s" repeatCount="indefinite" begin="3.5s"/>
+      <animate attributeName="opacity" values="0;0;1;0" dur="4s" repeatCount="indefinite" begin="3.5s"/>
+    </circle>
+  </g>
+
+  <!-- Shooting star 3 -->
+  <g>
+    <circle cx="100" cy="5" r="1.5" fill="#64FFDA" filter="url(#glow)" opacity="0">
+      <animate attributeName="cx" values="100;350" dur="4.5s" repeatCount="indefinite" begin="7s"/>
+      <animate attributeName="cy" values="5;50" dur="4.5s" repeatCount="indefinite" begin="7s"/>
+      <animate attributeName="opacity" values="0;0;0.9;0" dur="4.5s" repeatCount="indefinite" begin="7s"/>
+    </circle>
+  </g>
+
+  <!-- Decorative accent line top -->
+  <rect x="250" y="30" width="400" height="1" fill="url(#lineGrad)" opacity="0.4"/>
+
+  <!-- Main name -->
+  <text x="450" y="118" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif"
+        font-size="52" font-weight="700" fill="url(#nameGrad)" filter="url(#softglow)" letter-spacing="2">
+    Kanishka Shukla
+  </text>
+
+  <!-- Subtitle -->
+  <text x="450" y="150" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif"
+        font-size="15" fill="#94a3b8" letter-spacing="3">
+    AI ENGINEER  ·  FULL STACK DEVELOPER  ·  OPEN SOURCE
+  </text>
+
+  <!-- Accent line under name -->
+  <rect x="275" y="162" width="350" height="1" fill="url(#lineGrad)" opacity="0.6"/>
+
+  <!-- Animated typing text -->
+  <text x="450" y="195" text-anchor="middle" font-family="'Courier New', monospace"
+        font-size="16" fill="#00E5FF" filter="url(#glow)" opacity="0.9">
+    <tspan>
+      <animate attributeName="opacity" values="1;1;0;0;0;0;0;0;0;0;1" dur="10s" repeatCount="indefinite"/>
+      ▸ Building AI Agents
+    </tspan>
+    <tspan>
+      <animate attributeName="opacity" values="0;0;1;1;0;0;0;0;0;0;0" dur="10s" repeatCount="indefinite"/>
+      ▸ Java Developer
+    </tspan>
+    <tspan>
+      <animate attributeName="opacity" values="0;0;0;0;1;1;0;0;0;0;0" dur="10s" repeatCount="indefinite"/>
+      ▸ Machine Learning
+    </tspan>
+    <tspan>
+      <animate attributeName="opacity" values="0;0;0;0;0;0;1;1;0;0;0" dur="10s" repeatCount="indefinite"/>
+      ▸ Next.js Developer
+    </tspan>
+    <tspan>
+      <animate attributeName="opacity" values="0;0;0;0;0;0;0;0;1;1;0" dur="10s" repeatCount="indefinite"/>
+      ▸ Open Source Contributor
+    </tspan>
+  </text>
+
+  <!-- Social pill badges -->
+  <g font-family="'Segoe UI', system-ui, sans-serif" font-size="11">
+    <!-- VIT Bhopal pill -->
+    <rect x="295" y="218" width="100" height="22" rx="11" fill="#7C4DFF" opacity="0.25"/>
+    <rect x="295" y="218" width="100" height="22" rx="11" fill="none" stroke="#7C4DFF" stroke-width="0.5" opacity="0.8"/>
+    <text x="345" y="233" text-anchor="middle" fill="#c4b5fd" font-size="11">🎓 VIT Bhopal</text>
+
+    <!-- India pill -->
+    <rect x="407" y="218" width="85" height="22" rx="11" fill="#00E5FF" opacity="0.15"/>
+    <rect x="407" y="218" width="85" height="22" rx="11" fill="none" stroke="#00E5FF" stroke-width="0.5" opacity="0.8"/>
+    <text x="449" y="233" text-anchor="middle" fill="#67e8f9" font-size="11">📍 India</text>
+
+    <!-- Open to work pill -->
+    <rect x="504" y="218" width="110" height="22" rx="11" fill="#64FFDA" opacity="0.12"/>
+    <rect x="504" y="218" width="110" height="22" rx="11" fill="none" stroke="#64FFDA" stroke-width="0.5" opacity="0.8"/>
+    <text x="559" y="233" text-anchor="middle" fill="#6ee7b7" font-size="11">✦ Open to Work</text>
+  </g>
+
+  <!-- Decorative accent line bottom -->
+  <rect x="250" y="252" width="400" height="1" fill="url(#lineGrad)" opacity="0.3"/>
+
+  <!-- Bottom corner accents -->
+  <g opacity="0.3" stroke="#7C4DFF" stroke-width="1" fill="none">
+    <polyline points="12,268 12,278 22,278"/>
+    <polyline points="878,268 878,278 888,278"/>
+    <polyline points="12,12 12,22 22,22"/>
+    <polyline points="878,12 878,22 888,22"/>
+  </g>
+</svg>
