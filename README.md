@@ -294,6 +294,19 @@ AI-powered supervisor feedback analyzer using Next.js and Ollama.
 </p>
 
 ---
+## 📊 Contribution Radar
+
+<p align="center">
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=KanishkaShukla04&theme=github_dark" width="32%"/>
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=KanishkaShukla04&theme=github_dark" width="32%"/>
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=KanishkaShukla04&theme=github_dark" width="32%"/>
+</p>
+
+<p align="center">
+<img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=KanishkaShukla04&theme=github_dark"/>
+</p>
+
+---
 
 ## 🏆 Achievements
 
