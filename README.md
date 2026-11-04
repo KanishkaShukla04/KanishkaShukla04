@@ -15,7 +15,7 @@
   <a href="https://www.hackerrank.com/profile/kiarashukla632">
     <img src="https://img.shields.io/badge/HackerRank-00EA64?style=for-the-badge&logo=hackerrank&logoColor=black"/>
   </a>
-  <a href="https://codeforces.com/profile/kanishka04">
+  <a href="https://codeforces.com/profile/kanishkashukla27">
     <img src="https://img.shields.io/badge/Codeforces-1F8ACB?style=for-the-badge&logo=codeforces&logoColor=white"/>
   </a>
 </p>
